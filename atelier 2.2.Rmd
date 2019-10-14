@@ -1,0 +1,127 @@
+---
+title: "atelier 2"
+author: "Zoé"
+date: "14/10/2019"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## présentation des vecteurs 
+
+Les vecteurs sont l’un des objets de bases de R et correspondent à une liste de valeurs. Leurs propriétés fondamentales sont :
+
+1.les vecteurs sont unidimensionnels (i.e. c’est un objet à une seule dimension, à la différence d’une matrice par exemple) ;
+2.toutes les valeurs d’un vecteur sont d’un seul et même type ;
+3.les vecteurs ont une longueur qui correspond au nombre de valeurs contenues dans le vecteur.
+
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+x <- seq(from=0.01,to=10,by=0.01)
+length(x)
+plot(x,log(x),col='blue')
+mean(x)  
+sd(x)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r}
+x <- c(1,2,3)
+x
+class(x)
+```
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+z <- c("pepito","juanito","jorgito")
+z
+class(z)
+```
+
+```{r}
+taille <- c(1.88,1.78,1.67,1.55)
+taille
+sexe <- c('f','h','f','f')
+sexe
+class(taille)
+class(sexe)
+bd <- data.frame(taille,sexe)
+bd
+```
+
+## Fonction rep()
+```{r}
+x <- rep("pepito",5)
+x
+y <- c(rep("f",5),rep("h",3))
+y       
+```
+## Fonction seq()
+
+```{r}
+x <- seq(from=-10,to=10,by=2.5)
+x
+x <- seq(from=-10,to=10,by=5)
+x
+x <- seq(from=-100,to=100,by=4)
+x
+```
+
+## L'opérateur 
+
+```{r}
+x[20]
+x[20:30]
+20/30
+```
+## Vecteur remarquables 
+
+```{r}
+LETTERS
+```
+```{r}
+letters
+```
+```{r}
+month.name
+```
+```{r}
+month.abb
+```
+```{r}
+taille <- c(1.88,NA,1.65,1.92,NA,1.55)
+taille
+mean(taille,na='TRUE')
+sd(taille,na='TRUE')
+summary(taille)
+is.na(taille)
+```
+## Indexation par condition 
+
+```{r}
+sexe <- c(rep("f",25),rep("h",50))
+taille <- rnorm(75,165,4)
+bd <- data.frame(sexe,taille)
+taille.f <- taille[sexe=="f"]
+taille.f
+taille.h <- taille[sexe=="h"]
+taille.h
+mean(taille)
+mean(taille.f)
+mean(taille.h)
+conditionelle <- sexe[taille < 164]
+conditionelle 
+(table(conditionelle)/length(taille))*100
+boxplot(taille,taille.h,taille.f)
+```
